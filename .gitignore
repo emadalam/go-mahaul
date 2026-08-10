@@ -1,0 +1,25 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+/cmd/gen/gen 
+
+# Test binary, profiling, and coverage files
+*.test
+out/
+coverage.txt
+coverage.out
+profile.out
+
+# Go workspace file
+go.work
+go.work.sum
+
+# OS and IDE specific
+.DS_Store
+.idea/
+.vscode/
+*.swp
