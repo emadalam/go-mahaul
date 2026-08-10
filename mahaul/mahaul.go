@@ -1,3 +1,6 @@
+// go-mahaul is a simple, zero-dependencies library to parse, validate
+// and fetch type-safe environment variables. Check the README for usage
+// details.
 package mahaul
 
 import "reflect"
