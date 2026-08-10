@@ -12,7 +12,19 @@ Parse and validate your environment variables easily in Go with the following be
 
 ## Installation
 
-1. Create a configuration file `internal/env/env.config.json` 
+1. Add the `go-mahaul` generator tool to your module
+```shell
+go get -tool github.com/emadalam/go-mahaul/cmd/gen
+```
+
+2. Create the package file `internal/env/env.go` with the following contents
+```go
+package env
+
+//go:generate go run github.com/emadalam/go-mahaul/cmd/gen
+```
+
+3. Create a configuration file `internal/env/env.config.json`
 ```json
 {
   "DEPLOYMENT_ENV": {
@@ -34,36 +46,10 @@ Parse and validate your environment variables easily in Go with the following be
 }
 ```
 
-2. Create the package file `internal/env/env.go` with the following contents
-```go
-package env
-
-//go:generate go run github.com/emadalam/go-mahaul/cmd/gen@latest
-```
-
-Alternatively if you prefer to strictly pin the version of this tool in your `go.mod` alongside your other dependencies, create a `tools.go` file with a build tag:
-
-```go
-//go:build tools
-// +build tools
-
-package tools
-
-import (
-	_ "github.com/emadalam/go-mahaul/cmd/gen"
-)
-```
-Run `go mod tidy` to track the version, and then use this go:generate directive:
-
-```go
-package env
-
-//go:generate go run github.com/emadalam/go-mahaul/cmd/gen
-```
-
-3. Finally run the following as part of your build process which will generate the `env` package
+4. Finally run the following as part of your build process which will generate the `env` package
 ```sh
 go generate ./...
+go mod tidy
 ```
 
 ## Usage
